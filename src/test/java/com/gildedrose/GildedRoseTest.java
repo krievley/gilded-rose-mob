@@ -2,16 +2,26 @@ package com.gildedrose;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class GildedRoseTest {
 
+    GildedRose app;
+
+    @Before
+    public void setUp() throws Exception {
+        Item[] items = new Item[] { new Item("item", 10, 10)};
+        app = new GildedRose(items);
+    }
+
     @Test
-    public void foo() {
-        Item[] items = new Item[] { new Item("fixme", 0, 0) };
-        GildedRose app = new GildedRose(items);
+    public void itemShouldDecrementQuality() {
+        app.items = new Item[] { new Item("item", 10, 10)};
+
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+
+        assertEquals(9, app.items[0].quality);
     }
 
 }
