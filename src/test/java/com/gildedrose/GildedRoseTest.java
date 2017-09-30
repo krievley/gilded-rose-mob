@@ -52,7 +52,7 @@ public class GildedRoseTest {
         app.items = new Item[] { new Item("Aged Brie", 10, 0)};
         app.updateQuality();
 
-        assertEquals(0, app.items[0].quality);
+        assertEquals(1, app.items[0].quality);
     }
 
 }
