@@ -26,12 +26,24 @@ class GildedRose {
                         // increment quality by 1
                         item.quality += 1;
                     }
+
+                    if (item.sellIn < 0 ) {
+                        item.quality += 1;
+                    }
+
                     // decrement sellIn by 1
                     item.sellIn -= 1;
+
+                    if(item.quality > 50) {
+                        item.quality = 50;
+                    }
                     return;
                 case tickets:
                     //Check the sellin date.
-                    if(item.sellIn < 6) {
+                    if (item.sellIn < 0 ) {
+                        item.quality = 0;
+                    }
+                    else if(item.sellIn < 6) {
                         // increment quality by 3
                         item.quality += 3;
                     }
@@ -43,6 +55,7 @@ class GildedRose {
                         // increment quality by 1
                         item.quality += 1;
                     }
+
                     // if item quality is is greater than 50
                     if (item.quality > 50) {
                         //default to 50
@@ -55,10 +68,16 @@ class GildedRose {
 
                     return;
                 default:
-                    // check quality is more than 0
+                    // if quality is more than 0
                    if (item.quality > 0) {
-                   // decrement item by 1
-                       item.quality -= 1;
+                       if (item.sellIn >= 0) {
+                           // decrement item by 1
+                           item.quality -= 1;
+                       }
+                       // if quality < 0, decrement 2
+                       else {
+                            item.quality -= 2;
+                       }
                    }
                    // decrement sellIn by 1
                    item.sellIn -= 1;
