@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+/**
+ *
+ *
+ */
 class GildedRose {
     Item[] items;
 
@@ -14,7 +18,9 @@ class GildedRose {
 
     enum ItemType { brie, tickets, sulfuras, otherItem, }
 
-
+    /**
+     *
+     */
     public void updateQuality() {
         for (Item item: items) {
 
@@ -56,6 +62,12 @@ class GildedRose {
         }
     }
 
+    /**
+     *
+     *
+     * @param item
+     * @param modifier
+     */
     private void resolveQuality(Item item, int modifier) {
         //Resolve the modifier.
         if (item.name.contains("conjured")) { modifier *= 2; }
