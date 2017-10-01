@@ -11,17 +11,31 @@ class GildedRose {
     private final String TICKETS = "Backstage passes to a TAFKAL80ETC concert";
     private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
+    enum ItemType { brie, tickets, sulfuras }
+
+
     public void updateQuality() {
         for (Item item: items) {
 
+            ItemType type = ItemType.valueOf(item.name);
+
+            switch (type) {
+                case brie:
+
+                    return;
+                case tickets:
+
+                    return;
+                case sulfuras:
+
+                    return;
+            }
+
          //for (int i = 0; i < items.length; i++) {
             // check it's NOT brie || NOT backstage passes
-            if (!item.name.equals(BRIE)
-                    && !item.name.equals(TICKETS)) {
-                // check quality is more than 0
-                if (item.quality > 0) {
-                    // check item is NOT sulfuras
-                    if (!item.name.equals(SULFURAS)) {
+            if (!item.name.equals(BRIE) && !item.name.equals(TICKETS)) {
+                // check quality is more than 0 && check item is NOT sulfuras
+                if (item.quality > 0 && !item.name.equals(SULFURAS)) {
                         // decrement item by 1
                         item.quality = item.quality - 1;
                     }
