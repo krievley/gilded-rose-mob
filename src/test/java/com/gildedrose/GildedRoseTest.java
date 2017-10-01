@@ -143,4 +143,9 @@ public class GildedRoseTest {
         assertEquals(expectedOutput, app.items[0].toString());
     }
 
+    @Test
+    public void conjuredItemsIdentified() {
+
+    }
+
 }

@@ -11,7 +11,7 @@ class GildedRose {
     private final String TICKETS = "Backstage passes to a TAFKAL80ETC concert";
     private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    enum ItemType { brie, tickets, sulfuras, otherItem }
+    enum ItemType { brie, tickets, sulfuras, otherItem, }
 
 
     public void updateQuality() {
@@ -33,6 +33,7 @@ class GildedRose {
                     //Check the sellin date.
                     if (item.sellIn <= 0 ) {
                         item.quality = 0;
+                        modifier = 0;
                         break;
                     }
                     else if(item.sellIn < 6) { modifier = 3; }
@@ -42,6 +43,7 @@ class GildedRose {
                 case sulfuras:
                     // offset the sellIn by 1 to take account of decrement
                     item.sellIn += 1;
+                    modifier = 0;
                     break;
                 default:
                    if (item.sellIn >= 0) { modifier = -1; }
@@ -64,8 +66,6 @@ class GildedRose {
         else if(item.quality > 50 && !item.name.equals(SULFURAS)) {
             //Default to fifty.
             item.quality = 50;
-
         }
-
     }
 }
