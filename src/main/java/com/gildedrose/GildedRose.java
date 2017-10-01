@@ -18,23 +18,16 @@ class GildedRose {
         for (Item item: items) {
 
             ItemType type = ItemType.otherItem;
-            if(item.name.equals(BRIE)) {
-                type = ItemType.brie;
-            } else if (item.name.equals(TICKETS)) {
-                type = ItemType.tickets;
-            } else if (item.name.equals(SULFURAS)) {
-               type = ItemType.sulfuras;
-            }
+            if(item.name.equals(BRIE)) { type = ItemType.brie;
+            } else if (item.name.equals(TICKETS)) { type = ItemType.tickets;
+            } else if (item.name.equals(SULFURAS)) { type = ItemType.sulfuras; }
 
             int modifier = 1;
 
             switch (type) {
                 case brie:
                     //Passed selling doubles quality
-                    if (item.sellIn < 0 ) {
-                        modifier = 2;
-                    }
-
+                    if (item.sellIn < 0 ) { modifier = 2; }
                     break;
                 case tickets:
                     //Check the sellin date.
@@ -42,14 +35,8 @@ class GildedRose {
                         item.quality = 0;
                         break;
                     }
-                    else if(item.sellIn < 6) {
-                        // increment quality by 3
-                        modifier = 3;
-                    }
-                    else if(item.sellIn < 11) {
-
-                        modifier = 2;
-                    }
+                    else if(item.sellIn < 6) { modifier = 3; }
+                    else if(item.sellIn < 11) { modifier = 2; }
 
                     break;
                 case sulfuras:
@@ -57,14 +44,8 @@ class GildedRose {
                     item.sellIn += 1;
                     break;
                 default:
-                   if (item.sellIn >= 0) {
-                       // decrement item by 1
-                       modifier = -1;
-                   }
-                   // if quality < 0, decrement 2
-                   else {
-                       modifier = - 2;
-                   }
+                   if (item.sellIn >= 0) { modifier = -1; }
+                   else { modifier = - 2; }
             }
 
             item.sellIn -= 1;
