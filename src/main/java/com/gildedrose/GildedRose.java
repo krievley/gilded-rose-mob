@@ -21,22 +21,30 @@ class GildedRose {
 
             switch (type) {
                 case brie:
-
+                    if (item.quality < 50) {
+                        item.quality += 1;
+                    }
                     return;
                 case tickets:
-
+                    if (item.quality < 50) {
+                        item.quality += 1;
+                    }
                     return;
                 case sulfuras:
 
                     return;
+                default:
+                    // check quality is more than 0
+                   if (item.quality > 0) {
+                   // decrement item by 1
+                       item.quality -= 1;
+                   }
             }
 
          //for (int i = 0; i < items.length; i++) {
             // check it's NOT brie || NOT backstage passes
             if (!item.name.equals(BRIE) && !item.name.equals(TICKETS)) {
-                // check quality is more than 0 && check item is NOT sulfuras
                 if (item.quality > 0 && !item.name.equals(SULFURAS)) {
-                        // decrement item by 1
                         item.quality = item.quality - 1;
                     }
                 }
