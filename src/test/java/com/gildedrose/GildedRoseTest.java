@@ -83,7 +83,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void sulfurasQaulityNeverChanges() {
+    public void sulfurasQualityNeverChanges() {
         app.items = new Item[] { new Item(sulfuras, 10, 80)};
 
         app.updateQuality();
@@ -190,4 +190,12 @@ public class GildedRoseTest {
         assertEquals(0, app.items[0].quality);
     }
 
+    @Test
+    public void conjuredSulfurasQualityNeverChanges() {
+        app.items = new Item[] { new Item(conjured + sulfuras, 10, 80)};
+
+        app.updateQuality();
+
+        assertEquals(80, app.items[0].quality);
+    }
 }

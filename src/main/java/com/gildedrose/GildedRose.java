@@ -1,8 +1,8 @@
 package com.gildedrose;
 
 /**
- *
- *
+ * The Gilded Rose class models a store which contains various types of items
+ * @author Adam Zemmoura, E Kathuria, Kristin Rievley, Sean Ward
  */
 class GildedRose {
     Item[] items;
@@ -19,15 +19,19 @@ class GildedRose {
     enum ItemType { brie, tickets, sulfuras, otherItem, }
 
     /**
-     *
+     * This method simulates the passage of one day and contains the logic applicable
+     * to update the item quality and sellIn values per the requirements. This method
+     * is called on every Item in the items array.
      */
     public void updateQuality() {
         for (Item item: items) {
 
             ItemType type = ItemType.otherItem;
             if(item.name.equals(BRIE) || item.name.equals(CONJURED + BRIE)) { type = ItemType.brie;
-            } else if (item.name.equals(TICKETS) || item.name.equals(CONJURED + TICKETS)) { type = ItemType.tickets;
-            } else if (item.name.equals(SULFURAS)) { type = ItemType.sulfuras; }
+            } else if (item.name.equals(TICKETS) ||
+                    item.name.equals(CONJURED + TICKETS)) { type = ItemType.tickets;
+            } else if (item.name.equals(SULFURAS) ||
+                    item.name.equals(CONJURED + SULFURAS)) { type = ItemType.sulfuras;  }
 
             int modifier = 1;
 
@@ -37,7 +41,7 @@ class GildedRose {
                     if (item.sellIn < 0 ) { modifier = 2; }
                     break;
                 case tickets:
-                    //Check the sellin date.
+                    //Check the sellIn date.
                     if (item.sellIn <= 0 ) {
                         item.quality = 0;
                         modifier = 0;
@@ -63,10 +67,10 @@ class GildedRose {
     }
 
     /**
-     *
-     *
-     * @param item
-     * @param modifier
+     * This method takes an item and changes its quality value based on a modifier.
+     * Quality is doubled if the Item is conjured.
+     * @param item The item for which quality is being updated
+     * @param modifier The value by which the quality is modified
      */
     private void resolveQuality(Item item, int modifier) {
         //Resolve the modifier.
@@ -77,7 +81,8 @@ class GildedRose {
             //Default to zero.
             item.quality = 0;
         }
-        else if(item.quality > 50 && !item.name.equals(SULFURAS)) {
+        else if(item.quality > 50 && !item.name.equals(SULFURAS)
+                && !item.name.equals(CONJURED + SULFURAS)) {
             //Default to fifty.
             item.quality = 50;
         }
