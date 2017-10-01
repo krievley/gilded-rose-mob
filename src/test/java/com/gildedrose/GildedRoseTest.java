@@ -11,6 +11,7 @@ public class GildedRoseTest {
     String agedBrie;
     String sulfuras;
     String backStagePasses;
+    String conjured;
 
     @Before
     public void setUp() throws Exception {
@@ -19,6 +20,7 @@ public class GildedRoseTest {
         agedBrie = "Aged Brie";
         sulfuras = "Sulfuras, Hand of Ragnaros";
         backStagePasses = "Backstage passes to a TAFKAL80ETC concert";
+        conjured = "conjured ";
     }
 
     @Test
@@ -81,7 +83,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void sulfurasQaulityNeverChanges() {
+    public void sulfurasQualityNeverChanges() {
         app.items = new Item[] { new Item(sulfuras, 10, 80)};
 
         app.updateQuality();
@@ -152,4 +154,48 @@ public class GildedRoseTest {
         assertEquals(8, app.items[0].quality);
     }
 
+    @Test
+    public void conjuredBrieDegradeTwiceAsFast() {
+        app.items = new Item[] { new Item(conjured + agedBrie, 10, 10)};
+
+        app.updateQuality();
+
+        assertEquals(12, app.items[0].quality);
+    }
+
+    @Test
+    public void conjuredBackstagePassesIncreaseInQualityBy2Bettwen10And5Days() {
+        app.items = new Item[] { new Item(conjured + backStagePasses, 10, 10)};
+
+        app.updateQuality();
+
+        assertEquals(14, app.items[0].quality);
+    }
+
+    @Test
+    public void conjuredBackstagePassesIncreaseInQualityBy3Bettwen5And0Days() {
+        app.items = new Item[] { new Item(conjured + backStagePasses, 5, 10)};
+
+        app.updateQuality();
+
+        assertEquals(16, app.items[0].quality);
+    }
+
+    @Test
+    public void conjuredBackstagePassesAreWorthlessAfterSellIn() {
+        app.items = new Item[] { new Item(conjured + backStagePasses, 0, 10)};
+
+        app.updateQuality();
+
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    public void conjuredSulfurasQualityNeverChanges() {
+        app.items = new Item[] { new Item(conjured + sulfuras, 10, 80)};
+
+        app.updateQuality();
+
+        assertEquals(80, app.items[0].quality);
+    }
 }
