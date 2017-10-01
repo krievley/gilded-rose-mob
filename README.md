@@ -4,6 +4,12 @@
 1. Slack - Our team used this tool to exchange schedules and plan the project.
 2. join.me - We used this program to meet and record our mob programming online.
 
+## Passed Unit Tests
+See test-result.png
+
+## 100% Code Coverage
+See test-result.png
+
 ## Code Smells
 1. "for" Loop 
     This necessitated a redeclaration of the item declaration with iteration.
