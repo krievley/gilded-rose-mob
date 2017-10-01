@@ -11,13 +11,21 @@ class GildedRose {
     private final String TICKETS = "Backstage passes to a TAFKAL80ETC concert";
     private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
-    enum ItemType { brie, tickets, sulfuras }
+    enum ItemType { brie, tickets, sulfuras, otherItem }
 
 
     public void updateQuality() {
         for (Item item: items) {
 
-            ItemType type = ItemType.valueOf(item.name);
+            ItemType type = ItemType.otherItem;
+            if(item.name.equals(BRIE)) {
+                type = ItemType.brie;
+            } else if (item.name.equals(TICKETS)) {
+                type = ItemType.tickets;
+            } else if (item.name.equals(SULFURAS)) {
+               type = ItemType.sulfuras;
+            }
+
 
             switch (type) {
                 case brie:
