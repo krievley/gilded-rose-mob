@@ -25,7 +25,8 @@ See test-result.png
 4. Redundant Code
     This produced a lot of unnecessary code that was difficult to read and update.
     We solved this "smell" by extrapolating duplicate logic to an outside
-    method that could be called when needed.
+    method that could be called when needed.  We reduced repetitive code in a manner consistent
+    with DRY principles.
 5. No Code Comments
     The lack of comments in the original code made it difficult to read
     and locate the logic that was being implemented. We solved this "smell"
