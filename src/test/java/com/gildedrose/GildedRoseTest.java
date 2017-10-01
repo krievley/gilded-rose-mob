@@ -152,4 +152,13 @@ public class GildedRoseTest {
         assertEquals(8, app.items[0].quality);
     }
 
+    @Test
+    public void conjuredBrieDegradeTwiceAsFast() {
+        app.items = new Item[] { new Item("conjured" + agedBrie, 10, 10)};
+
+        app.updateQuality();
+
+        assertEquals(12, app.items[0].quality);
+    }
+
 }

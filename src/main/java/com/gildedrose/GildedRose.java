@@ -57,6 +57,7 @@ class GildedRose {
 
     private void resolveQuality(Item item, int modifier) {
         //Resolve the modifier.
+        if (item.name.contains("conjured")) { modifier *= 2; }
         item.quality += modifier;
         //Check to see if the quality passed is a negative value.
         if(item.quality < 0) {
