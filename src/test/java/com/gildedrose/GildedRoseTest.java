@@ -144,8 +144,12 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void conjuredItemsIdentified() {
+    public void conjuredItemsDegradeTwiceAsFast() {
+        app.items = new Item[] { new Item("conjured item", 10, 10)};
 
+        app.updateQuality();
+
+        assertEquals(8, app.items[0].quality);
     }
 
 }
