@@ -26,6 +26,8 @@ class GildedRose {
                         // increment quality by 1
                         item.quality += 1;
                     }
+                    // decrement sellIn by 1
+                    item.sellIn -= 1;
                     return;
                 case tickets:
                     //Check the sellin date.
@@ -46,6 +48,8 @@ class GildedRose {
                         //default to 50
                         item.quality = 50;
                     }
+                    // decrement sellIn by 1
+                    item.sellIn -= 1;
                     return;
                 case sulfuras:
 
@@ -56,6 +60,8 @@ class GildedRose {
                    // decrement item by 1
                        item.quality -= 1;
                    }
+                   // decrement sellIn by 1
+                   item.sellIn -= 1;
             }
 
          //for (int i = 0; i < items.length; i++) {
