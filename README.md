@@ -10,6 +10,10 @@ See test-result.png
 ## 100% Code Coverage
 See test-result.png
 
+## Video of Session
+Videos are located on the following YouTube playlist: 
+https://www.youtube.com/playlist?list=PLlWUGW-yaHZi3ru_Fc4rGUQOPE5FJjvMB
+
 ## Code Smells
 1. "for" Loop 
     This necessitated a redeclaration of the item declaration with iteration.
