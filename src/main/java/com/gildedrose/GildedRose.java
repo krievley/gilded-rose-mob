@@ -7,17 +7,21 @@ class GildedRose {
         this.items = items;
     }
 
+    private final String BRIE = "Aged Brie";
+    private final String TICKETS = "Backstage passes to a TAFKAL80ETC concert";
+    private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+
     public void updateQuality() {
         for (Item item: items) {
 
          //for (int i = 0; i < items.length; i++) {
             // check it's NOT brie || NOT backstage passes
-            if (!item.name.equals("Aged Brie")
-                    && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (!item.name.equals(BRIE)
+                    && !item.name.equals(TICKETS)) {
                 // check quality is more than 0
                 if (item.quality > 0) {
                     // check item is NOT sulfuras
-                    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                    if (!item.name.equals(SULFURAS)) {
                         // decrement item by 1
                         item.quality = item.quality - 1;
                     }
@@ -31,7 +35,7 @@ class GildedRose {
                     item.quality = item.quality + 1;
 
                     // if the item IS backstage passes
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.name.equals(TICKETS)) {
                         // if item sellIn is less than 11
                         if (item.sellIn < 11) {
                             // if item quality is less than 50
@@ -54,7 +58,7 @@ class GildedRose {
             }
 
             // if item NOT sulfuras
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (!item.name.equals(SULFURAS)) {
                 // decrement sellIn by 1
                 item.sellIn = item.sellIn - 1;
             }
@@ -62,13 +66,13 @@ class GildedRose {
             // if any item is sellIn less than 0
             if (item.sellIn < 0) {
                 // if item NOT brie
-                if (!item.name.equals("Aged Brie")) {
+                if (!item.name.equals(BRIE)) {
                     // if item NOT backstage passes
-                    if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (!item.name.equals(TICKETS)) {
                         // if item quality is more than 0
                         if (item.quality > 0) {
                             // if item is NOT sulfuras
-                            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                            if (!item.name.equals(SULFURAS)) {
                                 // decrement item quality by 1
                                 item.quality = item.quality - 1;
                             }
