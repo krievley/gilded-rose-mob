@@ -26,71 +26,65 @@ class GildedRose {
                type = ItemType.sulfuras;
             }
 
+            int modifier = 1;
 
             switch (type) {
                 case brie:
                     //Passed selling doubles quality
                     if (item.sellIn < 0 ) {
-                        item.quality =resolveQuality(item.quality, 2);
+                        modifier = 2;
                     }
-                    else {
-                        item.quality =resolveQuality(item.quality, 1);
-                    }
-                    // decrement sellIn by 1
-                    item.sellIn -= 1;
-                    return;
+
+                    break;
                 case tickets:
                     //Check the sellin date.
                     if (item.sellIn <= 0 ) {
                         item.quality = 0;
+                        break;
                     }
                     else if(item.sellIn < 6) {
                         // increment quality by 3
-                        item.quality = resolveQuality(item.quality, 3);
+                        modifier = 3;
                     }
                     else if(item.sellIn < 11) {
-                        // increment quality by 1
-                        item.quality = resolveQuality(item.quality, 2);
-                    }
-                    else {
-                        // increment quality by 1
-                        item.quality = resolveQuality(item.quality, 1);
+
+                        modifier = 2;
                     }
 
-                    // decrement sellIn by 1
-                    item.sellIn -= 1;
-                    return;
+                    break;
                 case sulfuras:
-
-                    return;
+                    // offset the sellIn by 1 to take account of decrement
+                    item.sellIn += 1;
+                    break;
                 default:
                    if (item.sellIn >= 0) {
                        // decrement item by 1
-                       item.quality = resolveQuality(item.quality, -1);
+                       modifier = -1;
                    }
                    // if quality < 0, decrement 2
                    else {
-                       item.quality = resolveQuality(item.quality, -2);
+                       modifier = - 2;
                    }
-                   // decrement sellIn by 1
-                   item.sellIn -= 1;
             }
+
+            item.sellIn -= 1;
+            resolveQuality(item, modifier);
         }
     }
 
-    public int resolveQuality(int quality, int modifier) {
+    private void resolveQuality(Item item, int modifier) {
         //Resolve the modifier.
-        quality = quality + modifier;
+        item.quality += modifier;
         //Check to see if the quality passed is a negative value.
-        if(quality < 0) {
+        if(item.quality < 0) {
             //Default to zero.
-            quality = 0;
+            item.quality = 0;
         }
-        else if(quality > 50) {
+        else if(item.quality > 50 && !item.name.equals(SULFURAS)) {
             //Default to fifty.
-            quality = 50;
+            item.quality = 50;
+
         }
-        //Return the correct value.
-        return quality;
+
     }
 }
