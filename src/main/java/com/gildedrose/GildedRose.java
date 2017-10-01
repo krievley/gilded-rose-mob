@@ -10,6 +10,7 @@ class GildedRose {
     private final String BRIE = "Aged Brie";
     private final String TICKETS = "Backstage passes to a TAFKAL80ETC concert";
     private final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private final String CONJURED = "conjured ";
 
     enum ItemType { brie, tickets, sulfuras, otherItem, }
 
@@ -18,8 +19,8 @@ class GildedRose {
         for (Item item: items) {
 
             ItemType type = ItemType.otherItem;
-            if(item.name.equals(BRIE)) { type = ItemType.brie;
-            } else if (item.name.equals(TICKETS)) { type = ItemType.tickets;
+            if(item.name.equals(BRIE) || item.name.equals(CONJURED + BRIE)) { type = ItemType.brie;
+            } else if (item.name.equals(TICKETS) || item.name.equals(CONJURED + TICKETS)) { type = ItemType.tickets;
             } else if (item.name.equals(SULFURAS)) { type = ItemType.sulfuras; }
 
             int modifier = 1;
