@@ -22,16 +22,16 @@ https://www.youtube.com/playlist?list=PLlWUGW-yaHZi3ru_Fc4rGUQOPE5FJjvMB
     Each item name was hardcoded and repeated through the code, creating
     a higher probability of mistake. We solved this "smell" by adding
     variables to hold the item names.
-3. Nested if/else Statements
+3. Nested if/else Statements - 
     These statements were hard to read, and made it hard to update the code.
     We solved this "smell" by implementing a switch statement that applied
     the correct logic for each "type" of item.
-4. Redundant Code
+4. Redundant Code - 
     This produced a lot of unnecessary code that was difficult to read and update.
     We solved this "smell" by extrapolating duplicate logic to an outside
     method that could be called when needed.  We reduced repetitive code in a manner consistent
     with DRY principles.
-5. No Code Comments
+5. No Code Comments - 
     The lack of comments in the original code made it difficult to read
     and locate the logic that was being implemented. We solved this "smell"
     by adding comments that assisted future developers in reading and
